@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 import { habitService, checkInService } from '@/services'
 import HabitGrid from '@/components/organisms/HabitGrid'
 import HabitModal from '@/components/molecules/HabitModal'
+import CategoryFilterBar from '@/components/molecules/CategoryFilterBar'
 import SkeletonLoader from '@/components/molecules/SkeletonLoader'
 import ErrorState from '@/components/molecules/ErrorState'
 import EmptyState from '@/components/molecules/EmptyState'
@@ -18,7 +19,7 @@ const Habits = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [editingHabit, setEditingHabit] = useState(null)
   const [deleteConfirm, setDeleteConfirm] = useState(null)
-  
+  const [selectedCategory, setSelectedCategory] = useState('all')
   const loadData = async () => {
     setLoading(true)
     setError(null)
@@ -121,6 +122,10 @@ const Habits = () => {
     )
   }
   
+const filteredHabits = selectedCategory === 'all' 
+    ? habits 
+    : habits.filter(habit => habit.category === selectedCategory)
+  
   return (
     <div className="p-6 space-y-8 max-w-full">
       {/* Header */}
@@ -155,6 +160,12 @@ const Habits = () => {
         />
       ) : (
         <div className="space-y-6">
+          {/* Category Filter */}
+          <CategoryFilterBar
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+            habits={habits}
+          />
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <motion.div
@@ -204,11 +215,11 @@ const Habits = () => {
                 </div>
               </div>
             </motion.div>
-          </div>
+</div>
           
           {/* Habits Grid */}
           <HabitGrid
-            habits={habits}
+            habits={filteredHabits}
             checkIns={checkIns}
             onToggle={handleToggle}
             onEdit={handleEdit}

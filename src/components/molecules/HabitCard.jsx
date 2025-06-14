@@ -63,18 +63,27 @@ const HabitCard = ({
         />
         
         <div className="relative z-10">
-          <div className="flex items-start justify-between mb-4">
+<div className="flex items-start justify-between mb-4">
             <div className="flex-1 min-w-0">
               <h3 className="font-display font-semibold text-gray-900 text-lg mb-2 truncate">
                 {habit.name}
               </h3>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 flex-wrap gap-y-2">
                 <Badge 
                   variant={isCompleted ? 'success' : 'default'}
                   size="small"
                 >
                   {habit.frequency}
                 </Badge>
+                {habit.category && (
+                  <Badge 
+                    variant="outline"
+                    size="small"
+                    className="capitalize"
+                  >
+                    {habit.category}
+                  </Badge>
+                )}
                 <span className="text-sm text-gray-500">
                   {habit.currentStreak} day streak
                 </span>
