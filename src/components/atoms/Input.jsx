@@ -9,7 +9,7 @@ const Input = forwardRef(({
   ...props 
 }, ref) => {
   const [isFocused, setIsFocused] = useState(false)
-  const [hasValue, setHasValue] = useState(props.value || props.defaultValue || false)
+  const [hasValue, setHasValue] = useState(Boolean(props.value || props.defaultValue))
   
   const handleFocus = (e) => {
     setIsFocused(true)
@@ -57,11 +57,6 @@ const Input = forwardRef(({
               : 'top-1/2 -translate-y-1/2 text-sm text-gray-500'
             }
           `}
-          animate={{
-            top: isFocused || hasValue ? '0.5rem' : '50%',
-            fontSize: isFocused || hasValue ? '0.75rem' : '0.875rem',
-            color: isFocused ? '#6366F1' : '#6B7280'
-          }}
         >
           {label}
         </motion.label>
