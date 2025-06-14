@@ -9,7 +9,7 @@ const Input = forwardRef(({
   ...props 
 }, ref) => {
   const [isFocused, setIsFocused] = useState(false)
-  const [hasValue, setHasValue] = useState(Boolean(props.value || props.defaultValue))
+  const [hasValue, setHasValue] = useState(Boolean(props.value || props.defaultValue || props.placeholder))
   
   const handleFocus = (e) => {
     setIsFocused(true)
@@ -39,20 +39,20 @@ const Input = forwardRef(({
           w-full px-4 py-3 text-gray-900 bg-white border-2 rounded-lg transition-all duration-200
           focus:outline-none focus:ring-0 focus:border-primary
           ${error ? 'border-error' : 'border-gray-200 hover:border-gray-300'}
-          ${label ? 'pt-6' : ''}
+${label ? 'pt-6' : ''}
         `}
-        placeholder={label ? '' : props.placeholder}
+        placeholder={label && !isFocused && !hasValue ? '' : props.placeholder}
         onFocus={handleFocus}
         onBlur={handleBlur}
         onChange={handleChange}
         {...htmlProps}
       />
       
-      {label && (
+{label && (
         <motion.label
           className={`
-            absolute left-4 transition-all duration-200 pointer-events-none
-            ${isFocused || hasValue 
+            absolute left-4 transition-all duration-200 pointer-events-none select-none
+            ${isFocused || hasValue || props.placeholder
               ? 'top-2 text-xs text-primary font-medium' 
               : 'top-1/2 -translate-y-1/2 text-sm text-gray-500'
             }
