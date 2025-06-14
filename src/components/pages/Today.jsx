@@ -53,19 +53,19 @@ const Today = () => {
       setCheckIns(updatedCheckIns)
       
       // Update habit stats optimistically
-      setHabits(prev => prev.map(habit => {
-        if (habit.id === habitId) {
+setHabits(prev => prev.map(habit => {
+        if (habit.Id === habitId) {
           return completed
             ? {
                 ...habit,
-                currentStreak: habit.currentStreak + 1,
-                longestStreak: Math.max(habit.longestStreak, habit.currentStreak + 1),
-                completionRate: Math.min(100, habit.completionRate + 0.5)
+                current_streak: habit.current_streak + 1,
+                longest_streak: Math.max(habit.longest_streak, habit.current_streak + 1),
+                completion_rate: Math.min(100, habit.completion_rate + 0.5)
               }
             : {
                 ...habit,
-                currentStreak: Math.max(0, habit.currentStreak - 1),
-                completionRate: Math.max(0, habit.completionRate - 0.5)
+                current_streak: Math.max(0, habit.current_streak - 1),
+                completion_rate: Math.max(0, habit.completion_rate - 0.5)
               }
         }
         return habit

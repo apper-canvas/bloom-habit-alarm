@@ -252,11 +252,11 @@ const Calendar = () => {
                 style={{ backgroundColor: habit.color }}
               />
               <div className="flex-1 min-w-0">
-                <div className="text-sm font-medium text-gray-900 truncate">
-                  {habit.name}
+<div className="text-sm font-medium text-gray-900 truncate">
+                  {habit.Name}
                 </div>
                 <div className="text-xs text-gray-500">
-                  {habit.currentStreak} day streak
+                  {habit.current_streak} day streak
                 </div>
               </div>
             </motion.div>

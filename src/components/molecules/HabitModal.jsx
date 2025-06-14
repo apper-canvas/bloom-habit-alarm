@@ -36,8 +36,8 @@ const frequencies = [
   
   useEffect(() => {
     if (habit) {
-      setFormData({
-        name: habit.name || '',
+setFormData({
+        name: habit.Name || '',
         color: habit.color || '#6366F1',
         frequency: habit.frequency || 'daily',
         category: habit.category || 'mindfulness'
@@ -72,7 +72,7 @@ category: 'mindfulness'
     try {
       let savedHabit
       if (habit) {
-        savedHabit = await habitService.update(habit.id, formData)
+savedHabit = await habitService.update(habit.Id, formData)
         toast.success('Habit updated successfully!')
       } else {
         savedHabit = await habitService.create(formData)

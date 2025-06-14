@@ -19,16 +19,16 @@ const StatsOverview = ({ habits = [], checkIns = [], className = '' }) => {
     const totalHabits = habits.length
     
     // Active streaks (habits with current streak > 0)
-    const activeStreaks = habits.filter(habit => habit.currentStreak > 0).length
+const activeStreaks = habits.filter(habit => (habit.current_streak || 0) > 0).length
     
     // Average completion rate
-    const avgCompletionRate = habits.length > 0 
-      ? habits.reduce((sum, habit) => sum + habit.completionRate, 0) / habits.length
+const avgCompletionRate = habits.length > 0 
+      ? habits.reduce((sum, habit) => sum + (habit.completion_rate || 0), 0) / habits.length
       : 0
     
     // Longest streak across all habits
-    const longestStreak = habits.reduce((max, habit) => 
-      Math.max(max, habit.longestStreak), 0
+const longestStreak = habits.reduce((max, habit) => 
+      Math.max(max, habit.longest_streak || 0), 0
     )
     
     // This week's completion rate

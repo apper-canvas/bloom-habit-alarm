@@ -23,16 +23,16 @@ const HabitCard = ({
     setIsLoading(true)
     try {
       const today = new Date()
-      await checkInService.toggleCheckIn(habit.id, today, !isCompleted)
+await checkInService.toggleCheckIn(habit.Id, today, !isCompleted)
       
       // Update habit stats
       if (!isCompleted) {
         const newStats = {
-          currentStreak: habit.currentStreak + 1,
-          longestStreak: Math.max(habit.longestStreak, habit.currentStreak + 1),
-          completionRate: Math.min(100, habit.completionRate + 1)
+          currentStreak: habit.current_streak + 1,
+          longestStreak: Math.max(habit.longest_streak, habit.current_streak + 1),
+          completionRate: Math.min(100, habit.completion_rate + 1)
         }
-        await habitService.updateStats(habit.id, newStats)
+        await habitService.updateStats(habit.Id, newStats)
       }
       
       onToggle?.(habit.id, !isCompleted)
@@ -66,7 +66,7 @@ const HabitCard = ({
 <div className="flex items-start justify-between mb-4">
             <div className="flex-1 min-w-0">
               <h3 className="font-display font-semibold text-gray-900 text-lg mb-2 truncate">
-                {habit.name}
+                {habit.Name}
               </h3>
               <div className="flex items-center space-x-3 flex-wrap gap-y-2">
                 <Badge 
@@ -85,7 +85,7 @@ const HabitCard = ({
                   </Badge>
                 )}
                 <span className="text-sm text-gray-500">
-                  {habit.currentStreak} day streak
+                  {habit.current_streak} day streak
                 </span>
               </div>
             </div>
@@ -135,7 +135,7 @@ const HabitCard = ({
             <div className="flex justify-between items-center mb-2">
               <span className="text-sm text-gray-600">Progress</span>
               <span className="text-sm font-medium text-gray-900">
-                {habit.completionRate}%
+{habit.completion_rate}%
               </span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
@@ -143,7 +143,7 @@ const HabitCard = ({
                 className="h-2 rounded-full"
                 style={{ backgroundColor: habit.color }}
                 initial={{ width: 0 }}
-                animate={{ width: `${habit.completionRate}%` }}
+animate={{ width: `${habit.completion_rate}%` }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               />
             </div>
@@ -152,14 +152,14 @@ const HabitCard = ({
           {/* Stats */}
           <div className="grid grid-cols-2 gap-4 text-center">
             <div>
-              <div className="text-lg font-bold text-gray-900">
-                {habit.currentStreak}
+<div className="text-lg font-bold text-gray-900">
+                {habit.current_streak}
               </div>
               <div className="text-xs text-gray-500">Current</div>
             </div>
             <div>
               <div className="text-lg font-bold text-gray-900">
-                {habit.longestStreak}
+                {habit.longest_streak}
               </div>
               <div className="text-xs text-gray-500">Best</div>
             </div>

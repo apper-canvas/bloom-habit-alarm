@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { toast } from 'react-toastify'
-import { format, subDays, startOfWeek, endOfWeek, eachDayOfInterval } from 'date-fns'
-import { habitService, checkInService } from '@/services'
-import StatsOverview from '@/components/organisms/StatsOverview'
-import SkeletonLoader from '@/components/molecules/SkeletonLoader'
-import ErrorState from '@/components/molecules/ErrorState'
-import EmptyState from '@/components/molecules/EmptyState'
-import Card from '@/components/atoms/Card'
-import Badge from '@/components/atoms/Badge'
-import ApperIcon from '@/components/ApperIcon'
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+import { eachDayOfInterval, endOfWeek, format, startOfWeek, subDays } from "date-fns";
+import { checkInService, habitService } from "@/services";
+import StatsOverview from "@/components/organisms/StatsOverview";
+import SkeletonLoader from "@/components/molecules/SkeletonLoader";
+import ErrorState from "@/components/molecules/ErrorState";
+import EmptyState from "@/components/molecules/EmptyState";
+import Card from "@/components/atoms/Card";
+import Badge from "@/components/atoms/Badge";
+import ApperIcon from "@/components/ApperIcon";
 
 const Statistics = () => {
   const [habits, setHabits] = useState([])
@@ -49,8 +49,8 @@ const Statistics = () => {
     
     return weekDays.map(day => {
       const dayStr = format(day, 'yyyy-MM-dd')
-      const dayCheckIns = checkIns.filter(c => 
-        c.date.startsWith(dayStr) && c.completed
+const dayCheckIns = checkIns.filter(c => 
+        c.date && c.date.startsWith(dayStr) && c.completed
       )
       
       return {
@@ -68,9 +68,9 @@ const Statistics = () => {
   }
   
   const getStreakStats = () => {
-    const totalStreaks = habits.reduce((sum, habit) => sum + habit.currentStreak, 0)
-    const longestStreak = Math.max(...habits.map(h => h.longestStreak), 0)
-    const activeStreaks = habits.filter(h => h.currentStreak > 0).length
+const totalStreaks = habits.reduce((sum, habit) => sum + (habit.current_streak || 0), 0)
+    const longestStreak = Math.max(...habits.map(h => h.longest_streak || 0), 0)
+    const activeStreaks = habits.filter(h => (h.current_streak || 0) > 0).length
     
     return { totalStreaks, longestStreak, activeStreaks }
   }
@@ -208,14 +208,14 @@ const Statistics = () => {
                       {index + 1}
                     </div>
                     <div>
-                      <div className="font-medium text-gray-900">{habit.name}</div>
+<div className="font-medium text-gray-900">{habit.Name}</div>
                       <div className="text-sm text-gray-500">
-                        {habit.currentStreak} day streak
+                        {habit.current_streak} day streak
                       </div>
                     </div>
                   </div>
                   <Badge variant="success" size="small">
-                    {Math.round(habit.completionRate)}%
+{Math.round(habit.completion_rate)}%
                   </Badge>
                 </motion.div>
               ))}
@@ -305,28 +305,29 @@ const Statistics = () => {
                   <div
                     className="w-4 h-4 rounded-full"
                     style={{ backgroundColor: habit.color }}
+style={{ backgroundColor: habit.color }}
                   />
                   <Badge
-                    variant={habit.completionRate >= 80 ? 'success' : 
-                             habit.completionRate >= 60 ? 'warning' : 'default'}
+                    variant={habit.completion_rate >= 80 ? 'success' : 
+                             habit.completion_rate >= 60 ? 'warning' : 'default'}
                     size="small"
                   >
-                    {Math.round(habit.completionRate)}%
+                    {Math.round(habit.completion_rate)}%
                   </Badge>
                 </div>
                 
                 <h4 className="font-medium text-gray-900 mb-2 truncate">
-                  {habit.name}
+                  {habit.Name}
                 </h4>
                 
                 <div className="space-y-2 text-sm text-gray-600">
                   <div className="flex justify-between">
                     <span>Current streak:</span>
-                    <span className="font-medium">{habit.currentStreak} days</span>
+                    <span className="font-medium">{habit.current_streak} days</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Best streak:</span>
-                    <span className="font-medium">{habit.longestStreak} days</span>
+                    <span className="font-medium">{habit.longest_streak} days</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Frequency:</span>

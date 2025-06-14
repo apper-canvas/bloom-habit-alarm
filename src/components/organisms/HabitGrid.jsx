@@ -10,7 +10,7 @@ const HabitGrid = ({
   className = '' 
 }) => {
   const getCheckInForHabit = (habitId) => {
-    return checkIns.find(checkIn => checkIn.habitId === habitId)
+return checkIns.find(checkIn => checkIn.habit_id === habitId)
   }
   
   return (
