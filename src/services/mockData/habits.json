@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "name": "Morning Meditation",
+    "color": "#6366F1",
+    "frequency": "daily",
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "currentStreak": 7,
+    "longestStreak": 15,
+    "completionRate": 85.7
+  },
+  {
+    "id": "2",
+    "name": "Drink 8 Glasses of Water",
+    "color": "#06B6D4",
+    "frequency": "daily",
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "currentStreak": 12,
+    "longestStreak": 21,
+    "completionRate": 92.3
+  },
+  {
+    "id": "3",
+    "name": "Read for 30 Minutes",
+    "color": "#F59E0B",
+    "frequency": "daily",
+    "createdAt": "1/1/2024 12:00:00 AM.000Z",
+    "currentStreak": 5,
+    "longestStreak": 18,
+    "completionRate": 76.9
+  },
+  {
+    "id": "4",
+    "name": "Exercise",
+    "color": "#10B981",
+    "frequency": "daily",
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "currentStreak": 3,
+    "longestStreak": 12,
+    "completionRate": 68.4
+  },
+  {
+    "id": "5",
+    "name": "Write in Journal",
+    "color": "#8B5CF6",
+    "frequency": "daily",
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "currentStreak": 9,
+    "longestStreak": 14,
+    "completionRate": 81.2
+  }
+]

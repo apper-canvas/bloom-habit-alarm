@@ -1,0 +1,86 @@
+[
+  {
+    "id": "1",
+    "habitId": "1",
+    "date": "2024-01-15T00:00:00.000Z",
+    "completed": true,
+    "note": "10 minute session"
+  },
+  {
+    "id": "2",
+    "habitId": "1",
+    "date": "2024-01-14T00:00:00.000Z",
+    "completed": true,
+    "note": "Morning routine"
+  },
+  {
+    "id": "3",
+    "habitId": "2",
+    "date": "2024-01-15T00:00:00.000Z",
+    "completed": true,
+    "note": "Stayed hydrated all day"
+  },
+  {
+    "id": "4",
+    "habitId": "2",
+    "date": "2024-01-14T00:00:00.000Z",
+    "completed": true,
+    "note": ""
+  },
+  {
+    "id": "5",
+    "habitId": "3",
+    "date": "2024-01-15T00:00:00.000Z",
+    "completed": true,
+    "note": "Finished chapter 3"
+  },
+  {
+    "id": "6",
+    "habitId": "4",
+    "date": "2024-01-15T00:00:00.000Z",
+    "completed": true,
+    "note": "30 min workout"
+  },
+  {
+    "id": "7",
+    "habitId": "5",
+    "date": "2024-01-15T00:00:00.000Z",
+    "completed": true,
+    "note": "Reflected on goals"
+  },
+  {
+    "id": "8",
+    "habitId": "1",
+    "date": "2024-01-13T00:00:00.000Z",
+    "completed": true,
+    "note": ""
+  },
+  {
+    "id": "9",
+    "habitId": "2",
+    "date": "2024-01-13T00:00:00.000Z",
+    "completed": true,
+    "note": ""
+  },
+  {
+    "id": "10",
+    "habitId": "3",
+    "date": "2024-01-13T00:00:00.000Z",
+    "completed": false,
+    "note": "Missed today"
+  },
+  {
+    "id": "11",
+    "habitId": "4",
+    "date": "2024-01-13T00:00:00.000Z",
+    "completed": true,
+    "note": "Quick run"
+  },
+  {
+    "id": "12",
+    "habitId": "5",
+    "date": "2024-01-13T00:00:00.000Z",
+    "completed": true,
+    "note": ""
+  }
+]
